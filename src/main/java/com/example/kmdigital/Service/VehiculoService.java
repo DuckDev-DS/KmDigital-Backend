@@ -83,6 +83,7 @@ public class VehiculoService {
         return null;
     }
 
+    /**
     public List<Vehiculo> findByFiltroPrecio(
         Double precioMin,
         Double precioMax
@@ -112,7 +113,8 @@ public class VehiculoService {
             nombreMarca
         );
     }
-
+     */
+    
     public void deleteById(Integer id) {
         // Eliminar carritos asociados al vehículo
         List<Carrito> carritos = carritoService.findAll();
