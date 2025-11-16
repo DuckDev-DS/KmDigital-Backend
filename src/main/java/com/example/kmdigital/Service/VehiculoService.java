@@ -83,6 +83,36 @@ public class VehiculoService {
         return null;
     }
 
+    public List<Vehiculo> findByFiltroPrecio(
+        Double precioMin,
+        Double precioMax
+    ) {
+        if (precioMin == null && precioMax == null) {
+            return vehiculoRepository.findAll();
+        }
+
+        if(precioMin < 0 || precioMax < 0) {
+            throw new IllegalArgumentException("Los precios no pueden ser negativo");
+        }
+
+        return vehiculoRepository.findByFiltroPrecio(
+            precioMin,
+            precioMax
+        );
+    }
+
+    public List<Vehiculo> findByFiltroMarca(
+        String nombreMarca
+    ) {
+        if (nombreMarca == null || nombreMarca.isEmpty()) {
+            return vehiculoRepository.findAll();
+        }
+
+        return vehiculoRepository.findByFiltroMarca(
+            nombreMarca
+        );
+    }
+
     public void deleteById(Integer id) {
         // Eliminar carritos asociados al vehículo
         List<Carrito> carritos = carritoService.findAll();

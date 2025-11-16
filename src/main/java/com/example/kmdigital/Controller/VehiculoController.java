@@ -11,12 +11,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kmdigital.Model.Vehiculo;
 import com.example.kmdigital.Service.VehiculoService;
 
 
 
+@RestController
+@RequestMapping("/api/v1/vehiculos")
 public class VehiculoController {
 
     @Autowired
@@ -39,6 +44,30 @@ public class VehiculoController {
         }
         return ResponseEntity.ok(vehiculo);
     }
+
+    @GetMapping("/filtro/precio/{precioMin}/{precioMax}")
+    public ResponseEntity<List<Vehiculo>> getVehiculosByFiltroPrecio (
+        @RequestParam Double precioMin,
+        @RequestParam Double precioMax
+    ){
+        List<Vehiculo> vehiculos = vehiculoService.findByFiltroPrecio(precioMin, precioMax);
+        if (vehiculos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(vehiculos);
+    }
+
+    @GetMapping("/filtro/marca/{nombreMarca}")
+    public ResponseEntity<List<Vehiculo>> getVehiculoMarca (
+        @RequestParam String nombreMarca
+    ) {
+        List<Vehiculo> vehiculos = vehiculoService.findByFiltroMarca(nombreMarca);
+        if (vehiculos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(vehiculos);
+    }
+    
 
     @PostMapping()
     public ResponseEntity<Vehiculo> createVehiculo(@RequestBody Vehiculo vehiculo){
