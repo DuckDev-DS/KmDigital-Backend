@@ -10,7 +10,7 @@ import com.example.kmdigital.Model.Vehiculo;
 
 @Repository
 public interface VehiculoRepository extends JpaRepository<Vehiculo, Integer>    {
-
+/**
     @Query("""
             SELECT V FROM Vehiculo V
             WHERE (:precioMin IS NULL OR v.precio >= :precioMin) AND
@@ -31,6 +31,6 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo, Integer>    
     List<Vehiculo> findByFiltroMarca(
         String nombreMarca
     );
-
+*/
 
 }
