@@ -3,6 +3,7 @@ package com.example.kmdigital.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +48,18 @@ public class UsuarioController {
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
         Usuario newUsuario = usuarioService.save(usuario);
         return ResponseEntity.status(201).body(newUsuario);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Usuario usuario) {
+        Usuario login = usuarioService.login(usuario);
+        
+        if (login != null) {
+            login.setContrasena(null);
+            return ResponseEntity.ok(login);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
+        }
     }
 
     @PutMapping("/{id}")
