@@ -3,6 +3,7 @@ package com.example.kmdigital.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.kmdigital.Model.Carrito;
@@ -20,6 +21,9 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private CarritoService carritoService;
 
     public List<Usuario> findAll() {
@@ -31,12 +35,22 @@ public class UsuarioService {
         return usuario;
     }
 
+    public Usuario login(Usuario usuario){
+        Usuario foundUsuario = usuarioRepository.findByCorreo(usuario.getCorreo());
+        if(foundUsuario != null && passwordEncoder.matches(usuario.getContrasena(), foundUsuario.getContrasena())){
+            return foundUsuario;
+        }
+        return null;
+    }
+
     public Usuario save(Usuario usuario) {
+        String passwordHasheada = passwordEncoder.encode(usuario.getContrasena());
+        usuario.setContrasena(passwordHasheada);
         return usuarioRepository.save(usuario);
     }
 
     public Usuario update(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+        return save(usuario);
     }
 
     public Usuario partialUpdate(Usuario usuario){

@@ -8,4 +8,6 @@ import com.example.kmdigital.Model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
+    Usuario findByCorreo(String correo);
+
 }
