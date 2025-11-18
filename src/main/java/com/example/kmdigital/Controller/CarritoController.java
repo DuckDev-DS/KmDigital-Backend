@@ -25,7 +25,7 @@ public class CarritoController {
     @Autowired
     private CarritoService carritoService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Carrito>> getAllCarritos (){
         List <Carrito> carritos = carritoService.findAll();
         if (carritos.isEmpty()) {
@@ -43,7 +43,7 @@ public class CarritoController {
         return ResponseEntity.ok(carrito);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Carrito> createCarrito (@RequestBody Carrito carrito){
         Carrito newCarrito = carritoService.save(carrito);
         return ResponseEntity.status(201).body(newCarrito);

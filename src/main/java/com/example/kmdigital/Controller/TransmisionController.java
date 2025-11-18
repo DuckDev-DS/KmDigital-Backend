@@ -25,7 +25,7 @@ public class TransmisionController {
     @Autowired
     private TransmisionService transmisionService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Transmision>> getAllTransmisiones (){
         List<Transmision> transmision = transmisionService.findAll();
         if (transmision.isEmpty()) {
@@ -43,7 +43,7 @@ public class TransmisionController {
         return ResponseEntity.ok(transmision);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Transmision> createTransmision(@RequestBody Transmision transmision){
         Transmision newTransmision = transmisionService.save(transmision);
         return ResponseEntity.status(201).body(newTransmision);

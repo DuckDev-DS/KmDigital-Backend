@@ -25,7 +25,7 @@ public class ComunaController {
     @Autowired
     private ComunaService comunaService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Comuna>> getAllComunas (){
         List <Comuna> comunas = comunaService.findAll();
         if (comunas.isEmpty()) {
@@ -43,7 +43,7 @@ public class ComunaController {
         return ResponseEntity.ok(comuna);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Comuna> createComuna (@RequestBody Comuna comuna){
         Comuna newComuna = comunaService.save(comuna);
         return ResponseEntity.status(201).body(newComuna);

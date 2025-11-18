@@ -27,7 +27,7 @@ public class VehiculoController {
     @Autowired
     private VehiculoService vehiculoService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Vehiculo>> getAllVehiculos (){
         List<Vehiculo> vehiculo = vehiculoService.findAll();
         if (vehiculo.isEmpty()) {
@@ -71,7 +71,7 @@ public class VehiculoController {
     
     
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Vehiculo> createVehiculo(@RequestBody Vehiculo vehiculo){
         Vehiculo newVehiculo = vehiculoService.save(vehiculo);
         return ResponseEntity.status(201).body(newVehiculo);

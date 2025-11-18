@@ -24,7 +24,7 @@ public class RegionController {
     @Autowired
     private RegionService regionService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Region>> getAllRegiones (){
         List<Region> region = regionService.findAll();
         if (region.isEmpty()) {
@@ -42,7 +42,7 @@ public class RegionController {
         return ResponseEntity.ok(region);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Region> createRegion (@RequestBody Region region){
         Region newRegion = regionService.save(region);
         return ResponseEntity.status(201).body(newRegion);

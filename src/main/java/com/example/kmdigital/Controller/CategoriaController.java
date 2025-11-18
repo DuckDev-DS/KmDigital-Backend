@@ -25,7 +25,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Categoria>> getAllCategorias (){
         List <Categoria> categorias = categoriaService.findAll();
         if (categorias.isEmpty()) {
@@ -43,7 +43,7 @@ public class CategoriaController {
         return ResponseEntity.ok(categoria);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Categoria> createCategoria (@RequestBody Categoria categoria){
         Categoria newCategoria = categoriaService.save(categoria);
         return ResponseEntity.status(201).body(newCategoria);

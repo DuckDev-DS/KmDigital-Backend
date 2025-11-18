@@ -26,7 +26,7 @@ public class RolUsuarioController {
     @Autowired
     private RolUsuarioService rolUsuarioService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<RolUsuario>> getAllRoles (){
         List<RolUsuario> rolUsuario = rolUsuarioService.findAll();
         if (rolUsuario.isEmpty()) {
@@ -44,7 +44,7 @@ public class RolUsuarioController {
         return ResponseEntity.ok(rolUsuario);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<RolUsuario> createRolUsuario (@RequestBody RolUsuario rolUsuario){
         RolUsuario newRolUsuario = rolUsuarioService.save(rolUsuario);
         return ResponseEntity.status(201).body(newRolUsuario);

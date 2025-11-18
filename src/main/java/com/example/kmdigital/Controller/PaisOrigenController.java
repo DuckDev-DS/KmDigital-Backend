@@ -25,7 +25,7 @@ public class PaisOrigenController {
     @Autowired
     private PaisOrigenService paisOrigenService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<PaisOrigen>> getAllPaises (){
         List<PaisOrigen> paisesOrigen = paisOrigenService.findAll();
         if (paisesOrigen.isEmpty()) {
@@ -43,7 +43,7 @@ public class PaisOrigenController {
         return ResponseEntity.ok(paisOrigen);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<PaisOrigen> createPais (@RequestBody PaisOrigen paisOrigen){
         PaisOrigen newPaisOrigen = paisOrigenService.save(paisOrigen);
         return ResponseEntity.status(201).body(newPaisOrigen);

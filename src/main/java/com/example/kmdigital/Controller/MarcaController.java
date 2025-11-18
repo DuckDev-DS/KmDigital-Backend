@@ -26,7 +26,7 @@ public class MarcaController {
     @Autowired
     private MarcaService marcaService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Marca>> getAllMarcas (){
         List<Marca> marcas = marcaService.findAll();
         if (marcas.isEmpty()) {
@@ -44,7 +44,7 @@ public class MarcaController {
         return ResponseEntity.ok(marca);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Marca> createMarca (@RequestBody Marca marca){
         Marca newMarca = marcaService.save(marca);
         return ResponseEntity.status(201).body(newMarca);

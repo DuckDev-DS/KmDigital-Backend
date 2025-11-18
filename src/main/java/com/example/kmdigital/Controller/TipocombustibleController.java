@@ -26,7 +26,7 @@ public class TipocombustibleController {
     @Autowired
     private TipoCombustibleService tipoCombustibleService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<TipoCombustible>> getAlltipoCombustibles (){
         List<TipoCombustible> tipoCombustibles = tipoCombustibleService.findAll();
         if (tipoCombustibles.isEmpty()) {
@@ -44,7 +44,7 @@ public class TipocombustibleController {
         return ResponseEntity.ok(tipoCombustible);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<TipoCombustible> createTipoCombustible (@RequestBody TipoCombustible tipoCombustible){
         TipoCombustible newTipoCombustible = tipoCombustibleService.save(tipoCombustible);
         return ResponseEntity.status(201).body(newTipoCombustible);

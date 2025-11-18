@@ -24,7 +24,7 @@ public class SucursalController {
     @Autowired
     private SucursalService sucursalService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Sucursal>> getAllsucursales (){
         List<Sucursal> sucursal = sucursalService.findAll();
         if (sucursal.isEmpty()) {
@@ -42,7 +42,7 @@ public class SucursalController {
         return ResponseEntity.ok(sucursal);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Sucursal> createSucursal(@RequestBody Sucursal sucursal){
         Sucursal newSucursal = sucursalService.save(sucursal);
         return ResponseEntity.status(201).body(newSucursal);

@@ -24,7 +24,7 @@ public class ModeloController {
     @Autowired
     private ModeloService modeloService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Modelo>> getAllModelos (){
         List<Modelo> modelos = modeloService.findAll();
         if (modelos.isEmpty()) {
@@ -42,7 +42,7 @@ public class ModeloController {
         return ResponseEntity.ok(modelo);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Modelo> createModelo (@RequestBody Modelo modelo){
         Modelo newModelo = modeloService.save(modelo);
         return ResponseEntity.status(201).body(newModelo);

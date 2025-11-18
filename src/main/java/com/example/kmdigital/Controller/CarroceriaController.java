@@ -25,7 +25,7 @@ public class CarroceriaController {
     @Autowired
     private CarroceriaService carroceriaService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Carroceria>> getAllCarrocerias (){
         List <Carroceria> carrocerias = carroceriaService.findAll();
         if (carrocerias.isEmpty()) {
@@ -43,7 +43,7 @@ public class CarroceriaController {
         return ResponseEntity.ok(carroceria);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Carroceria> createCarroceria (@RequestBody Carroceria carroceria){
         Carroceria newCarroceria = carroceriaService.save(carroceria);
         return ResponseEntity.status(201).body(newCarroceria);

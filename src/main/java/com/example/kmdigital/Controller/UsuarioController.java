@@ -26,7 +26,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios (){
         List<Usuario> usuario = usuarioService.findAll();
         if (usuario.isEmpty()) {
@@ -44,7 +44,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario){
         Usuario newUsuario = usuarioService.save(usuario);
         return ResponseEntity.status(201).body(newUsuario);
