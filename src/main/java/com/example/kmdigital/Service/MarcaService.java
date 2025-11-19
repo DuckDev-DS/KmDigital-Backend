@@ -41,6 +41,9 @@ public class MarcaService {
             if (marca.getNombre() != null) {
                 existingMarca.setNombre(marca.getNombre());
             }
+            if (marca.getIamgenMarca() != null) {
+                existingMarca.setIamgenMarca(marca.getIamgenMarca());
+            }
             return marcaRepository.save(existingMarca);
         }
         return null;

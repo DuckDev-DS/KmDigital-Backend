@@ -38,6 +38,9 @@ public class Vehiculo {
     @Column(name="estadoVenta", nullable=false, length=50)
     private String estadoVenta;
 
+    @Column(name="imagenAuto", nullable=true, length=320)
+    private String imagenAuto;
+
     @ManyToOne
     @JoinColumn(name="carroceria_id")
     private Carroceria carroceria;

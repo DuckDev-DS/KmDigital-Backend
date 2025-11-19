@@ -60,6 +60,9 @@ public class VehiculoService {
             if (vehiculo.getEstadoVenta() != null) {
                 existingVehiculo.setEstadoVenta(vehiculo.getEstadoVenta());
             }
+            if (vehiculo.getImagenAuto() != null) {
+                existingVehiculo.setImagenAuto(vehiculo.getImagenAuto());
+            }
             if (vehiculo.getCarroceria() != null) {
                 existingVehiculo.setCarroceria(vehiculo.getCarroceria());
             }

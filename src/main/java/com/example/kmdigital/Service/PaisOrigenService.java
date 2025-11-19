@@ -41,6 +41,9 @@ public class PaisOrigenService {
             if (paisOrigen.getNombre() != null) {
                 existingPaisOrigen.setNombre(paisOrigen.getNombre());
             }
+            if (paisOrigen.getImagenPaisOrigen() != null) {
+                existingPaisOrigen.setImagenPaisOrigen(paisOrigen.getImagenPaisOrigen());
+            }
             return paisOrigenRepository.save(existingPaisOrigen);
         }
         return null;
