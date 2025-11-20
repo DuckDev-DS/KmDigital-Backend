@@ -21,6 +21,6 @@ public class Marca {
     @Column(name = "nombreMarca", nullable = false, length = 50, unique = true)
     private String nombre;
 
-    @Column(name="iamgenMarca", nullable=true, length=320)
-    private String iamgenMarca;
+    @Column(name="imagenMarca", nullable=true)
+    private String imagenMarca;
 }

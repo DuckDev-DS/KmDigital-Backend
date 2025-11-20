@@ -38,7 +38,7 @@ public class Vehiculo {
     @Column(name="estadoVenta", nullable=false, length=50)
     private String estadoVenta;
 
-    @Column(name="imagenAuto", nullable=true, length=320)
+    @Column(name="imagenAuto", nullable=true)
     private String imagenAuto;
 
     @ManyToOne

@@ -21,6 +21,6 @@ public class PaisOrigen {
     @Column(name = "nombrePaisOrigen", nullable = false, length = 50, unique = true)
     private String nombre;
 
-    @Column(name="imagenPaisOrigen", nullable=true, length=320)
+    @Column(name="imagenPaisOrigen", nullable=true)
     private String imagenPaisOrigen;
 }

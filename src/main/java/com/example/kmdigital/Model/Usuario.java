@@ -28,12 +28,12 @@ public class Usuario {
     @Column(name = "correoUsuario", nullable = false, length = 100, unique = true)
     private String correo;
 
-    @Column(name = "contrasenaUsuario", nullable = false, length = 300)
+    @Column(name = "contrasenaUsuario", nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contrasena;
 
     @Column(name = "telefonoUsuario", nullable = false)
-    private Integer telefono;
+    private String telefono;
 
     @ManyToOne
     @JoinColumn(name = "comuna_id")
